@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Место для портрета команды</title>
+  <desc id="desc">Замените этот файл фотографией двух юристов.</desc>
+  <rect width="900" height="1200" fill="#dce3e5"/>
+  <rect x="34" y="34" width="832" height="1132" fill="none" stroke="#8e9ca3" stroke-width="2"/>
+  <path d="M450 0v1200M0 600h900" stroke="#8e9ca3" stroke-opacity=".34"/>
+  <circle cx="450" cy="508" r="118" fill="none" stroke="#752f3e" stroke-width="2"/>
+  <text x="450" y="690" text-anchor="middle" fill="#242426" font-family="Arial, sans-serif" font-size="30" letter-spacing="4">ПОРТРЕТ КОМАНДЫ</text>
+  <text x="450" y="740" text-anchor="middle" fill="#59636a" font-family="Arial, sans-serif" font-size="18">Замените файл team-portrait-placeholder.svg</text>
+  <text x="450" y="772" text-anchor="middle" fill="#59636a" font-family="Arial, sans-serif" font-size="18">на загруженную фотографию</text>
+</svg>
