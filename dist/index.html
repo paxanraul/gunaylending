@@ -22,17 +22,28 @@
 
     <header class="site-header" data-reveal>
       <a class="wordmark" href="#top" aria-label="На главную">
-        <span class="wordmark-mark">ЮП</span>
-        <span class="wordmark-name">[Название команды]</span>
+        <span class="wordmark-name">Садигова × Гриднева</span>
       </a>
 
       <nav class="desktop-nav" aria-label="Основная навигация">
         <a href="#team">О команде</a>
         <a href="#practice">Практика</a>
-        <a href="#process">Как работаем</a>
+        <a href="#reasons">Наш подход</a>
         <a class="nav-contact" href="#contact">Связаться</a>
       </nav>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="menu-toggle-label">Меню</span>
+        <span class="menu-toggle-icon" aria-hidden="true"><i></i><i></i></span>
+      </button>
     </header>
+
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильная навигация" aria-hidden="true">
+      <a href="#team">О команде</a>
+      <a href="#practice">Практика</a>
+      <a href="#reasons">Наш подход</a>
+      <a class="mobile-menu-contact" href="#contact">Связаться</a>
+    </nav>
 
     <main id="main">
       <section class="hero" id="top" aria-labelledby="hero-title">
@@ -44,8 +55,8 @@
 
           <div class="hero-description" data-reveal data-delay="2">
             <p>
-              Мы — команда юристов, которая ведёт судебные дела разной сложности,
-              разбирается в деталях и остаётся рядом с клиентом на каждом этапе.
+              Ведём судебные дела разной сложности, разбираемся в деталях и
+              остаёмся рядом на каждом этапе.
             </p>
           </div>
 
@@ -67,13 +78,11 @@
 
         <figure class="hero-portrait" data-reveal data-delay="1">
           <div class="portrait-frame" data-parallax>
-            <!-- Замените файл assets/team-portrait-placeholder.svg на исходный портрет
-                 или измените src ниже на имя загруженной фотографии. -->
             <img
-              src="./assets/team-portrait-placeholder.svg"
+              src="./assets/team-portrait.jpg"
               alt="Портрет двух юристов команды"
-              width="900"
-              height="1200"
+              width="1800"
+              height="2695"
             />
           </div>
           <figcaption>
@@ -96,9 +105,8 @@
         <div class="section-intro">
           <h2 id="team-title" data-reveal>Вместе видим больше.</h2>
           <p class="lead" data-reveal data-delay="1">
-            Мы работаем вместе, чтобы смотреть на дело шире: внимательно изучать
-            обстоятельства, выстраивать позицию и находить решение, которое
-            действительно защищает интересы клиента.
+            Работаем вместе, чтобы видеть дело шире, выстраивать сильную позицию
+            и находить решение в интересах клиента.
           </p>
         </div>
 
@@ -106,40 +114,61 @@
           <article class="lawyer-card" data-reveal>
             <div class="card-topline">
               <span>Юрист 01</span>
-              <span class="editable-tag">Заполнить</span>
             </div>
-            <h3>[Имя и фамилия]</h3>
+            <figure class="lawyer-photo">
+              <img
+                src="./assets/gunay-sadigova.jpg"
+                alt="Гюнай Садигова"
+                width="1400"
+                height="2099"
+              />
+            </figure>
+            <h3>Гюнай Садигова</h3>
             <dl>
               <div>
                 <dt>Образование</dt>
-                <dd>[Укажите вуз, специальность и год выпуска]</dd>
+                <dd>Полное высшее образование</dd>
               </div>
               <div>
                 <dt>Специализация</dt>
-                <dd>[Укажите основные направления практики]</dd>
+                <dd>Юриспруденция</dd>
               </div>
             </dl>
-            <p class="lawyer-note">[Короткий личный текст о подходе к работе и общению с клиентами]</p>
+            <p class="lawyer-note">Внимательно разбирается в обстоятельствах дела, помогает выстроить понятную позицию и сохраняет связь с клиентом на каждом этапе.</p>
+            <a class="call-lawyer" href="tel:+79260980004">Позвонить Гюнай <span>+7 (926) 098-00-04</span></a>
           </article>
 
           <article class="lawyer-card" data-reveal data-delay="1">
             <div class="card-topline">
               <span>Юрист 02</span>
-              <span class="editable-tag">Заполнить</span>
             </div>
-            <h3>[Имя и фамилия]</h3>
+            <figure class="lawyer-photo lawyer-photo--irina">
+              <img
+                src="./assets/irina-gridneva.jpg"
+                alt="Ирина Гриднева"
+                width="647"
+                height="1400"
+              />
+            </figure>
+            <h3>Ирина Гриднева</h3>
             <dl>
               <div>
                 <dt>Образование</dt>
-                <dd>[Укажите вуз, специальность и год выпуска]</dd>
+                <dd>Полное высшее образование</dd>
               </div>
               <div>
                 <dt>Специализация</dt>
-                <dd>[Укажите основные направления практики]</dd>
+                <dd>Юриспруденция</dd>
               </div>
             </dl>
-            <p class="lawyer-note">[Короткий личный текст о подходе к работе и общению с клиентами]</p>
+            <p class="lawyer-note">Системно оценивает ситуацию и возможные риски, переводит сложные юридические вопросы на ясный и понятный язык.</p>
+            <a class="call-lawyer" href="tel:+79257277471">Позвонить Ирине <span>+7 (925) 727-74-71</span></a>
           </article>
+        </div>
+        <div class="lawyer-carousel-controls" aria-label="Переключить специалиста">
+          <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Предыдущий специалист">←</button>
+          <span>Листайте специалистов</span>
+          <button type="button" class="carousel-arrow" data-carousel-next aria-label="Следующий специалист">→</button>
         </div>
       </section>
 
@@ -151,75 +180,41 @@
         <div class="practice-layout">
           <div class="practice-heading">
             <h2 id="practice-title" data-reveal>Ведём дела, где нужна сильная позиция</h2>
-            <p data-reveal data-delay="1">Нажмите на направление, чтобы открыть описание.</p>
+            <p data-reveal data-delay="1">Выберите направление, чтобы открыть описание.</p>
           </div>
 
           <div class="practice-list" data-accordion>
             <details data-reveal>
               <summary><span>01</span><strong>Семейные споры</strong><i></i></summary>
-              <div class="details-body"><p>[Добавьте короткое описание вопросов и ситуаций, с которыми вы работаете в этом направлении.]</p></div>
+              <div class="details-body"><p>Сопровождаем вопросы расторжения брака, алиментов, раздела имущества и споров о детях — от консультации до решения суда.</p></div>
             </details>
             <details data-reveal>
               <summary><span>02</span><strong>Жилищные и имущественные вопросы</strong><i></i></summary>
-              <div class="details-body"><p>[Добавьте короткое описание вопросов и ситуаций, с которыми вы работаете в этом направлении.]</p></div>
+              <div class="details-body"><p>Разбираем вопросы собственности, пользования жильём, сделок и имущественных разногласий.</p></div>
             </details>
             <details data-reveal>
               <summary><span>03</span><strong>Споры с застройщиками</strong><i></i></summary>
-              <div class="details-body"><p>[Добавьте короткое описание вопросов и ситуаций, с которыми вы работаете в этом направлении.]</p></div>
+              <div class="details-body"><p>Помогаем при нарушении сроков, недостатках объекта, взыскании неустойки и других спорах по договору.</p></div>
             </details>
             <details data-reveal>
               <summary><span>04</span><strong>Гражданские дела</strong><i></i></summary>
-              <div class="details-body"><p>[Добавьте короткое описание вопросов и ситуаций, с которыми вы работаете в этом направлении.]</p></div>
+              <div class="details-body"><p>Защищаем интересы в договорных, наследственных и иных гражданско-правовых спорах.</p></div>
             </details>
             <details data-reveal>
               <summary><span>05</span><strong>Представительство в суде</strong><i></i></summary>
-              <div class="details-body"><p>[Добавьте короткое описание формата представительства и этапов сопровождения.]</p></div>
+              <div class="details-body"><p>Готовим документы, формируем позицию и представляем интересы клиента на всех стадиях процесса.</p></div>
             </details>
             <details data-reveal>
               <summary><span>06</span><strong>Другие сложные правовые ситуации</strong><i></i></summary>
-              <div class="details-body"><p>[Добавьте короткое пояснение, в каких случаях стоит обратиться за первичной консультацией.]</p></div>
+              <div class="details-body"><p>Если ситуация не укладывается в стандартную категорию, изучим документы и предложим возможный план действий.</p></div>
             </details>
           </div>
         </div>
       </section>
 
-      <section class="section process-section" id="process" aria-labelledby="process-title">
-        <div class="section-kicker light" data-reveal>
-          <span>03</span>
-          <span>Процесс</span>
-        </div>
-        <div class="process-head">
-          <h2 id="process-title" data-reveal>Как мы работаем</h2>
-          <p data-reveal data-delay="1">Последовательно, прозрачно и с понятной логикой каждого решения.</p>
-        </div>
-
-        <ol class="process-list">
-          <li data-reveal>
-            <span class="step-number">01</span>
-            <h3>Первая консультация</h3>
-            <p>Вы рассказываете о ситуации, мы задаём уточняющие вопросы и определяем, с чего начать.</p>
-          </li>
-          <li data-reveal data-delay="1">
-            <span class="step-number">02</span>
-            <h3>Изучаем документы и обстоятельства</h3>
-            <p>Собираем факты в единую картину и отмечаем то, что может повлиять на позицию.</p>
-          </li>
-          <li data-reveal data-delay="2">
-            <span class="step-number">03</span>
-            <h3>Формируем стратегию</h3>
-            <p>Обсуждаем возможные сценарии и вместе выбираем обоснованный путь действий.</p>
-          </li>
-          <li data-reveal data-delay="3">
-            <span class="step-number">04</span>
-            <h3>Представляем ваши интересы</h3>
-            <p>Берём на себя юридическую работу и остаёмся на связи на каждом этапе.</p>
-          </li>
-        </ol>
-      </section>
-
       <section class="section reasons-section" id="reasons" aria-labelledby="reasons-title">
         <div class="section-kicker" data-reveal>
-          <span>04</span>
+          <span>03</span>
           <span>Подход</span>
         </div>
         <div class="reasons-layout">
@@ -271,20 +266,20 @@
 
     <footer class="site-footer">
       <div class="footer-brand">
-        <div class="wordmark-mark">ЮП</div>
-        <p>[Название команды]</p>
+        <p>Садигова × Гриднева</p>
       </div>
       <div class="footer-meta">
-        <p>[Москва / укажите город]</p>
-        <a href="tel:+79990000000">[+7 (___) ___-__-__]</a>
+        <p>Москва</p>
+        <a href="tel:+79260980004">Гюнай: +7 (926) 098-00-04</a>
+        <a href="tel:+79257277471">Ирина: +7 (925) 727-74-71</a>
       </div>
       <div class="footer-links">
         <a data-messenger="whatsapp" href="#">WhatsApp</a>
         <a data-messenger="telegram" href="#">Telegram</a>
         <a data-messenger="max" href="#">MAX</a>
       </div>
-      <a class="privacy-link" href="#">[Политика конфиденциальности]</a>
-      <p class="footer-year">© <span data-year></span> [Название команды]</p>
+      <a class="privacy-link" href="#">Политика конфиденциальности</a>
+      <p class="footer-year">© <span data-year></span> Садигова × Гриднева</p>
     </footer>
 
     <nav class="mobile-contact-bar" aria-label="Быстрая связь">

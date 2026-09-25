@@ -3,10 +3,33 @@
  * Все кнопки на странице обновятся автоматически.
  */
 const MESSENGER_LINKS = {
-  whatsapp: "https://wa.me/79990000000",
+  whatsapp: "https://wa.me/79260980004",
   telegram: "https://t.me/username",
   max: "https://max.ru/u/placeholder",
 };
+
+const menuToggle = document.querySelector(".menu-toggle");
+const mobileMenu = document.querySelector(".mobile-menu");
+const closeMobileMenu = () => {
+  if (!menuToggle || !mobileMenu) return;
+  document.body.classList.remove("menu-open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  mobileMenu.classList.remove("is-open");
+  mobileMenu.setAttribute("aria-hidden", "true");
+};
+
+if (menuToggle && mobileMenu) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = document.body.classList.toggle("menu-open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+  });
+  mobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMobileMenu));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMobileMenu();
+  });
+}
 
 document.querySelectorAll("[data-messenger]").forEach((link) => {
   const key = link.dataset.messenger;
@@ -46,6 +69,25 @@ accordionItems.forEach((item) => {
     });
   });
 });
+
+const lawyerGrid = document.querySelector(".lawyer-grid");
+const previousLawyer = document.querySelector("[data-carousel-prev]");
+const nextLawyer = document.querySelector("[data-carousel-next]");
+if (lawyerGrid && previousLawyer && nextLawyer) {
+  const updateLawyerArrows = () => {
+    const maxScroll = lawyerGrid.scrollWidth - lawyerGrid.clientWidth - 2;
+    previousLawyer.disabled = lawyerGrid.scrollLeft <= 2;
+    nextLawyer.disabled = lawyerGrid.scrollLeft >= maxScroll;
+  };
+  const moveLawyer = (direction) => {
+    lawyerGrid.scrollBy({ left: direction * lawyerGrid.clientWidth, behavior: "smooth" });
+  };
+  previousLawyer.addEventListener("click", () => moveLawyer(-1));
+  nextLawyer.addEventListener("click", () => moveLawyer(1));
+  lawyerGrid.addEventListener("scroll", updateLawyerArrows, { passive: true });
+  window.addEventListener("resize", updateLawyerArrows);
+  updateLawyerArrows();
+}
 
 const portrait = document.querySelector("[data-parallax]");
 if (portrait && !reduceMotion && window.matchMedia("(min-width: 900px)").matches) {
