@@ -1,12 +1,75 @@
-/*
- * Замените только эти три ссылки перед публикацией реальных контактов.
- * Все кнопки на странице обновятся автоматически.
- */
-const MESSENGER_LINKS = {
-  whatsapp: "https://wa.me/79260980004",
-  telegram: "https://t.me/username",
-  max: "https://max.ru/u/placeholder",
-};
+const LAWYER_CONTACTS = [
+  { name: "Гюнай Садигова", phone: "79260980004", display: "+7 (926) 098-00-04" },
+  { name: "Ирина Гриднева", phone: "79257277471", display: "+7 (925) 727-74-71" },
+];
+const MESSENGER_NAMES = { whatsapp: "WhatsApp", telegram: "Telegram", max: "MAX" };
+const contactDialog = document.createElement("dialog");
+contactDialog.className = "contact-picker";
+contactDialog.setAttribute("aria-labelledby", "contact-picker-title");
+document.body.append(contactDialog);
+let contactTrigger;
+
+function openContactPicker(messenger, trigger) {
+  contactTrigger = trigger;
+  contactDialog.replaceChildren();
+  const close = document.createElement("button");
+  close.type = "button";
+  close.className = "contact-picker-close";
+  close.setAttribute("aria-label", "Закрыть выбор юриста");
+  close.textContent = "×";
+  close.addEventListener("click", () => contactDialog.close());
+  const title = document.createElement("h2");
+  title.id = "contact-picker-title";
+  title.textContent = "С кем связаться?";
+  const intro = document.createElement("p");
+  intro.textContent = messenger === "max"
+    ? "Выберите юриста. Скопируйте номер и найдите контакт в MAX или позвоните по телефону."
+    : `Выберите юриста для общения в ${MESSENGER_NAMES[messenger]} или позвоните по телефону.`;
+  contactDialog.append(close, title, intro);
+  LAWYER_CONTACTS.forEach((person) => {
+    const row = document.createElement("section");
+    row.className = "contact-picker-person";
+    const name = document.createElement("h3");
+    name.textContent = person.name;
+    const phone = document.createElement("p");
+    phone.textContent = person.display;
+    const actions = document.createElement("div");
+    actions.className = "contact-picker-actions";
+    let message;
+    if (messenger === "max") {
+      message = document.createElement("button");
+      message.type = "button";
+      message.textContent = "Скопировать номер";
+      message.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(`+${person.phone}`);
+          message.textContent = "Номер скопирован";
+        } catch {
+          message.textContent = person.display;
+        }
+      });
+    } else {
+      message = document.createElement("a");
+      message.href = messenger === "whatsapp" ? `https://wa.me/${person.phone}` : `https://t.me/+${person.phone}`;
+      message.target = "_blank";
+      message.rel = "noopener noreferrer";
+      message.textContent = `Написать в ${MESSENGER_NAMES[messenger]}`;
+    }
+    message.className = "contact-picker-message";
+    const call = document.createElement("a");
+    call.href = `tel:+${person.phone}`;
+    call.textContent = "Позвонить";
+    actions.append(message, call);
+    row.append(name, phone, actions);
+    contactDialog.append(row);
+  });
+  contactDialog.showModal();
+}
+contactDialog.addEventListener("click", (event) => {
+  const rect = contactDialog.getBoundingClientRect();
+  if (event.target === contactDialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) contactDialog.close();
+});
+contactDialog.addEventListener("close", () => contactTrigger?.focus());
 
 const menuToggle = document.querySelector(".menu-toggle");
 const mobileMenu = document.querySelector(".mobile-menu");
@@ -32,10 +95,12 @@ if (menuToggle && mobileMenu) {
 }
 
 document.querySelectorAll("[data-messenger]").forEach((link) => {
-  const key = link.dataset.messenger;
-  link.href = MESSENGER_LINKS[key];
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
+  link.href = "#contact";
+  link.setAttribute("aria-haspopup", "dialog");
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    openContactPicker(link.dataset.messenger, link);
+  });
 });
 
 document.querySelector("[data-year]").textContent = new Date().getFullYear();
